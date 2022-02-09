@@ -22,7 +22,7 @@ L'obiettivo del progetto è di creare un sistema peer-to-peer nel quale gli uten
 ## Struttura del progetto
 Il progetto contiene un file Maven che presenta tutte le dipendenze necessarie, un estratto è riportato di seguito
 
-```maven
+```
 <repositories>
   
 	<repository>
@@ -62,13 +62,14 @@ Il progetto contiene un file Maven che presenta tutte le dipendenze necessarie, 
  Per utilizzare il progetto su Docker è necessario utilizzare il Dockerfile fornito. Il container Docker viene creato tramite il seguente comando:
  `docker build -t anonymous-chat .`
  
- (NOTA: è possibile eseguire il jar del progetto anche senza Docker inserendo nella riga di comando l'IP e l'ID del peer considerato)
+ NOTA: è possibile eseguire il jar del progetto anche senza Docker inserendo nella riga di comando l'IP e l'ID del peer considerato come di seguito
+ `java -jar AnonymousChat.jar 127.0.0.1 1`
  
  ### Creazione del master peer
  
  In seguito alla creazione del container è possibile generare il master peer con il seguente comando:
- `docker run -i --name master-peer -e -m="127.0.0.1" -e -id=1 anonymous-chat`
- Tramite le due variabili di ambiente si stabiliscono l'IP e l'ID del peer, di questi l'ultimo è unico in quanto deve essere possibile identificare ogni peer.
+ `docker run -i --name master-peer anonymous-chat`
+ Tramite le due variabili di ambiente poste nel Dockerfile si stabiliscono l'IP e l'ID del peer, di questi l'ultimo è unico in quanto deve essere possibile identificare ogni peer.
  
  ### Creazione dei generic peer
  
@@ -77,4 +78,4 @@ Il progetto contiene un file Maven che presenta tutte le dipendenze necessarie, 
  2. `docker inspect <ID del container>`
  
  Una volta ottenuta questa informazione è possibile generare gli altri peer con lo stesso comando:
- `docker run -i --name generic-peer -e -m=<IP master-peer> -e -id=2 anonymous-chat`
+ `docker run -i --name generic-peer -e -MASTER=<IP master-peer> -e -ID=2 anonymous-chat`
