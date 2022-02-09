@@ -13,4 +13,4 @@ ENV MASTER=127.0.0.1
 ENV ID=1
 COPY --from=1 /app/target/AnonymousChat.jar /app
 
-CMD /usr/bin/java -jar AnonymousChat.jar -m $MASTER -id $ID
+CMD /usr/bin/java -jar AnonymousChat.jar $MASTER $ID
