@@ -77,4 +77,4 @@ Il progetto contiene un file Maven che presenta tutte le dipendenze necessarie, 
  2. `docker inspect <ID del container>`
  
  Una volta ottenuta questa informazione è possibile generare gli altri peer con lo stesso comando:
- `docker run -i --name generic-peer -e -m="172.17.0.2" -e -id=2 anonymous-chat`
+ `docker run -i --name generic-peer -e -m=<IP master-peer> -e -id=2 anonymous-chat`
