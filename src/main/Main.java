@@ -6,10 +6,10 @@ import org.kohsuke.args4j.Option;
 
 public class Main {
 
-	//@Option(name = "-m", aliases = "--masterip", usage = "master", required = true)
+	@Option(name = "-m", aliases = "--masterip", usage = "master", required = true)
 	private static String master;
 
-	//@Option(name = "-id", aliases = "--identifierpeer", usage = "id", required = true)
+	@Option(name = "-id", aliases = "--identifierpeer", usage = "id", required = true)
 	private static int id;
 
 	public static void main(String[] args) throws Exception {

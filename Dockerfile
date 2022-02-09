@@ -9,8 +9,8 @@ RUN mvn package
 
 FROM openjdk:8-jre-alpine
 WORKDIR /app
-ENV m=127.0.0.1
-ENV id=1
+ENV MASTER=127.0.0.1
+ENV ID=1
 COPY --from=1 /app/target/AnonymousChat.jar /app
 
-CMD /usr/bin/java -jar AnonymousChat.jar -m $m -id $id
+CMD /usr/bin/java -jar AnonymousChat.jar -m $MASTER -id $ID
