@@ -47,103 +47,123 @@ class AnonymousChatTest {
 	}
 
 	@org.junit.jupiter.api.Test
+	@Order(2)
 	void createRoomTest(){
-		assertTrue(p1.createRoom("TRoomCreate"));
+		assertTrue(p1.createRoom("Room A"));
 	}
 	
 	@org.junit.jupiter.api.Test
+	@Order(3)
 	void createVoidRoomTest() {
 		assertFalse(p2.createRoom(""));
 	}
 	
 	@org.junit.jupiter.api.Test
+	@Order(4)
 	void subscribeToRoomTest(){
-		assertTrue(p1.createRoom("TRoomSub"));
-		assertTrue(p2.subscribeToRoom("TRoomSub"));
+		assertTrue(p2.createRoom("Room B"));
+		assertTrue(p2.subscribeToRoom("Room B"));
 	}
 	
 	@org.junit.jupiter.api.Test
+	@Order(5)
 	void subscribeToNonExistingRoomTest() {
-		assertFalse(p1.subscribeToRoom("FRoom"));
+		assertFalse(p1.subscribeToRoom("Room C"));
 	}
 	
 	@org.junit.jupiter.api.Test
+	@Order(6)
 	void subscribeToVoidRoomTest() {
 		assertFalse(p1.subscribeToRoom(""));
 	}
 	
 	@org.junit.jupiter.api.Test
+	@Order(7)
 	void subscribeTwiceToRoomTest() {
-		assertTrue(p2.createRoom("Twice room"));
-		assertTrue(p2.subscribeToRoom("Twice room"));
-		assertFalse(p2.subscribeToRoom("Twice room"));
+		assertTrue(p2.subscribeToRoom("Room A"));
+		assertFalse(p2.subscribeToRoom("Room A"));
 	}
 	
 	@org.junit.jupiter.api.Test
+	@Order(8)
 	void sendMessageTest() {
-		assertTrue(p2.createRoom("TRoomSend"));
-		assertTrue(p2.subscribeToRoom("TRoomSend"));
-		assertTrue(p2.sendMessage("TRoomSend", msg));
+		assertTrue(p3.subscribeToRoom("Room B"));
+		assertTrue(p3.sendMessage("Room B", msg));
 	}
 	
 	@org.junit.jupiter.api.Test
+	@Order(9)
 	void sendMsgToNotSubRoomTest() {
-		assertFalse(p1.sendMessage("TRoom", msg));
+		assertFalse(p1.sendMessage("Room B", msg));
 	}
 	
 	@org.junit.jupiter.api.Test
+	@Order(10)
 	void sendMsgToVoidRoomTest() {
-		assertFalse(p1.sendMessage("", msg));
+		assertFalse(p4.sendMessage("", msg));
 	}
 	
 	@org.junit.jupiter.api.Test
+	@Order(11)
 	void roomsListTest() {
-		assertTrue(p4.createRoom("List room"));
-		assertTrue(p4.subscribeToRoom("List room"));
+		assertTrue(p4.subscribeToRoom("Room B"));
 		assertTrue(p4.roomsList());
 	}
 	
 	@org.junit.jupiter.api.Test
+	@Order(12)
 	void roomsListVoidTest() {
+		assertTrue(p4.leaveRoom("Room B"));
 		assertFalse(p4.roomsList());
 	}
 	
 	@org.junit.jupiter.api.Test
+	@Order(13)
 	void listAvailableRoomsTest() throws ClassNotFoundException, IOException {
-		assertTrue(p4.createRoom("Free room"));
+		assertTrue(p4.createRoom("Room C"));
 		assertTrue(p4.listOfAvailableRooms());
 	}
 	
 	@org.junit.jupiter.api.Test
+	@Order(14)
 	void noAvailableRoomsTest() throws ClassNotFoundException, IOException {
-		assertTrue(p4.subscribeToRoom("Free room"));
-		assertTrue(p4.listOfAvailableRooms());
+		assertTrue(p2.subscribeToRoom("Room C"));
+		assertFalse(p2.listOfAvailableRooms());
 	}
 	
 	@org.junit.jupiter.api.Test
+	@Order(15)
 	void leaveRoomTest() {
-		assertTrue(p3.createRoom("TRoomLeave"));
-		assertTrue(p3.subscribeToRoom("TRoomLeave"));
-		assertTrue(p3.leaveRoom("TRoomLeave"));
+		assertTrue(p3.leaveRoom("Room B"));
 	}
 	
 	@org.junit.jupiter.api.Test
+	@Order(16)
 	void leaveVoidRoomTest() {
 		assertFalse(p2.leaveRoom(""));
 	}
 	
 	@org.junit.jupiter.api.Test
-	void leaveNotSUbscribedRoomTest() {
-		assertFalse(p2.leaveRoom("NotSubRoom"));
+	@Order(17)
+	void leaveNotSubscribedRoomTest() {
+		assertFalse(p4.leaveRoom("Room A"));
 	}
 	
 	@org.junit.jupiter.api.Test
+	@Order(18)
+	void leaveNonExistingRoomTest() {
+		assertFalse(p4.leaveRoom("Room D"));
+	}
+	
+	@org.junit.jupiter.api.Test
+	@Order(19)
 	void exitNetworkTest() throws Exception {
 		assertTrue(p4.exitNetwork());
 	}
 	
 	@org.junit.jupiter.api.Test
-	void generalTest(){
+	@Order(20)
+	void generalTest() throws ClassNotFoundException, IOException{
 		
 		assertTrue(p1.createRoom("IT room"));
 		assertTrue(p1.subscribeToRoom("IT room"));
@@ -166,6 +186,9 @@ class AnonymousChatTest {
 				
 		assertTrue(p3.sendMessage("IT room", "Message about IT"));
 		assertTrue(p4.sendMessage("Lecture room", "Lecture at 9:00 AM"));
+		
+		assertTrue(p2.roomsList());
+		assertTrue(p2.listOfAvailableRooms());
 	}
 
 	/**

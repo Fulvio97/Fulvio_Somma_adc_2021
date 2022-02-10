@@ -242,8 +242,11 @@ public class AnonymousUser {
 			}
 		}
 		
-		if(i == 0)
+		if(i == 0) {
 			System.out.println("Already subscribed to all rooms");
+			
+			return false;
+		}
 		
 		return true;
 			
