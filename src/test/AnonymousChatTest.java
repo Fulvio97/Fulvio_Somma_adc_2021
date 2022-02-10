@@ -189,6 +189,9 @@ class AnonymousChatTest {
 		
 		assertTrue(p2.roomsList());
 		assertTrue(p2.listOfAvailableRooms());
+		
+		assertTrue(p1.leaveRoom("IT room"));
+		assertFalse(p1.roomsList());
 	}
 
 	/**
