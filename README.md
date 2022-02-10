@@ -17,7 +17,7 @@ L'obiettivo del progetto è di creare un sistema peer-to-peer nel quale gli uten
 - Apache Maven
 - Docker
 - TomP2P
-- JUnit
+- JUnit 5
 
 ## Struttura del progetto
 Il progetto contiene un file Maven che presenta tutte le dipendenze necessarie, un estratto è riportato di seguito
