@@ -59,7 +59,7 @@ Il progetto contiene un file Maven che presenta tutte le dipendenze necessarie, 
  
  ## Esecuzione del progetto su Docker
  
- Per utilizzare il progetto su Docker è necessario utilizzare il Dockerfile fornito. Il container Docker viene creato tramite il seguente comando:
+ Per utilizzare il progetto su Docker è necessario utilizzare il Dockerfile fornito. L'immagine su Docker viene creata tramite il seguente comando:
  `docker build -t anonymous-chat .`
  
  ### Creazione del master peer
@@ -75,4 +75,4 @@ Il progetto contiene un file Maven che presenta tutte le dipendenze necessarie, 
  2. `docker inspect <ID del container>`
  
  Una volta ottenuta questa informazione è possibile generare gli altri peer con lo stesso comando:
- `docker run -i --name generic-peer -e MASTER=<IP master-peer> -e ID=2 anonymous-chat`
+ `docker run -i --name <name-of-peer> -e MASTER=<IP master-peer> -e ID=<peer-ID> anonymous-chat`
