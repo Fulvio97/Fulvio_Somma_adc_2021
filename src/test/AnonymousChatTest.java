@@ -169,6 +169,8 @@ class AnonymousChatTest {
 		assertTrue(p1.subscribeToRoom("IT room"));
 		assertTrue(p2.subscribeToRoom("IT room"));
 		assertTrue(p3.subscribeToRoom("IT room"));
+		
+		assertFalse(p2.listOfAvailableRooms());
 				
 		assertTrue(p3.createRoom("Lecture room"));
 		assertTrue(p3.subscribeToRoom("Lecture room"));
