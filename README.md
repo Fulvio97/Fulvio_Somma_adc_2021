@@ -1,4 +1,4 @@
-# Anonymous-chat
+# Anonymous chat
 Progetto sviluppato come parte del corso di architetture distribuite per il cloud.
 
 ## Scopo del progetto
@@ -62,13 +62,13 @@ Il progetto contiene un file Maven che presenta tutte le dipendenze necessarie, 
  Per utilizzare il progetto su Docker è necessario utilizzare il Dockerfile fornito. L'immagine su Docker viene creata tramite il seguente comando:
  `docker build -t anonymous-chat .`
  
- ### Creazione del master peer
+ ## Creazione del master peer
  
  In seguito alla creazione del container è possibile generare il master peer con il seguente comando:
  `docker run -i --name master-peer anonymous-chat`
  Tramite le due variabili di ambiente poste nel Dockerfile si stabiliscono l'IP e l'ID del peer, di questi l'ultimo è unico in quanto deve essere possibile identificare ogni peer.
  
- ### Creazione dei generic peer
+ ## Creazione dei generic peer
  
  Dopo aver eseguito i passi precedenti è possibile creare un numero a piacere di altri peer in maniera molto simile, bisogna però ottenere l'IP del container master tramite i   comandi:
  1. `docker ps`
@@ -76,3 +76,7 @@ Il progetto contiene un file Maven che presenta tutte le dipendenze necessarie, 
  
  Una volta ottenuta questa informazione è possibile generare gli altri peer con lo stesso comando:
  `docker run -i --name <name-of-peer> -e MASTER=<IP master-peer> -e ID=<peer-ID> anonymous-chat`
+ 
+ ### Nota
+ Per poter rieseguire il container dopo averlo chiuso è possibile sfruttare il comando
+ `docker start -i <nome-peer>`
