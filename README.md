@@ -55,7 +55,9 @@ Il progetto contiene un file Maven che presenta tutte le dipendenze necessarie, 
  4. `Message.java` permette di creare un messaggio.
  5. `MessageListener.java` è il listener che si occupa di gestire la ricezione dei messaggi.
  
- Il package `src/test` contiene la classe di test utilizzata per testare tutti i metodi del progetto contenuti nel package appena descritto.
+ Il package `src/test` contiene la classe di test utilizzata per testare tutti i metodi, e i casi possibili, del progetto contenuti nel package appena descritto.
+ 
+ All'interno della cartella `target` è presente il jar del progetto utilizzato per l'esecuzione nel container.
  
  ## Esecuzione del progetto su Docker
  
